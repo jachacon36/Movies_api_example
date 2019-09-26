@@ -66,7 +66,9 @@ class Aplication_test : Application() {
             .build()
         Realm.setDefaultConfiguration(realmConfiguration)
     }
-
+    fun component(): AppComponent? {
+        return appcomponent
+    }
 
 
 }
