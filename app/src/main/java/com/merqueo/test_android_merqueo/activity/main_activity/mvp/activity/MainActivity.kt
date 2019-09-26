@@ -1,4 +1,4 @@
-package com.merqueo.test_android_merqueo.activitys.main_activity.mvp.activity
+package com.merqueo.test_android_merqueo.activity.main_activity.mvp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
