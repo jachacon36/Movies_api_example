@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Test_android_merqueo</string>
+    <string name="loading">Cargando</string>
 </resources>
