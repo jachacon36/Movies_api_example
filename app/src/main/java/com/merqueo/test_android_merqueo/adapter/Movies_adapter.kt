@@ -30,8 +30,8 @@ class Movies_adapter(private val movies_db: RealmResults<Movies_model>) : Recycl
         try {
             val movies = movies_db[position]
 
-            holder.movie_name.text = movies!!.getResults()?.get(position)?.getOriginalTitle()
-            holder.movie_description.text = movies!!.getResults()?.get(position)?.getOverview()
+            holder.movie_name.text = movies!!.results?.get(position)?.originalTitle
+            holder.movie_description.text = movies!!.results?.get(position)?.overview
 
         } catch (e: Exception) {
         }
