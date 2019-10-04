@@ -7,10 +7,13 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.merqueo.test_android_merqueo.activity.data_model.Movies_model
+import com.merqueo.test_android_merqueo.data_model.Movies_model
+import com.merqueo.test_android_merqueo.activity.main_activity.mvp.activity.MainActivity
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.model.MainModel
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.view.MainView
 import com.merqueo.test_android_merqueo.adapter.Movies_adapter
+import com.merqueo.test_android_merqueo.data_model.Result
+import com.merqueo.test_android_merqueo.data_model.Shopping_cart
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -23,7 +26,6 @@ class MainPresenter(
 ) {
     private val realm = Realm.getDefaultInstance()
     private val REQUEST = 101
-    lateinit var moviesAdapter : Movies_adapter
 
     fun getMovies(page : Int): Disposable {
         return model.getMovies(page)
@@ -104,14 +106,29 @@ class MainPresenter(
     }
 
 
-    fun createAddres_adapter(movies: RealmResults<Movies_model>): Movies_adapter {
-        var adapter = Movies_adapter(movies)
+    fun createAddres_adapter(activity : MainActivity , movies: RealmResults<Movies_model>): Movies_adapter {
+        var adapter = Movies_adapter(activity, movies)
         movies.addChangeListener { t, changeSet -> adapter.notifyDataSetChanged() }
         return adapter
     }
 
     fun getMoviesDB(): RealmResults<Movies_model> {
         return realm.where(Movies_model::class.java).findAll()
+    }
+
+    fun addMovieShopping_Cart(position : Int){
+        var movie : Shopping_cart = Shopping_cart()
+        realm.executeTransaction { realm -> realm.insertOrUpdate(movie) }
+        view.updateShopping_cart(getMovieShopping_Cart().size)
+    }
+
+    fun getMovieShopping_Cart(): RealmResults<Shopping_cart> {
+        return realm.where(Shopping_cart::class.java).findAll()
+    }
+    fun clearMoviesDataFromDB() {
+        val movies = realm.where(Result::class.java).findAll()
+        realm.executeTransaction { movies.deleteAllFromRealm() }
+
     }
 
 

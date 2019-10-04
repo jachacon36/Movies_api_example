@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         view.createRecyclerView()
         getMovies()
+        view.updateShopping_cart(presenter.getMovieShopping_Cart().size)
     }
 
     private fun setDagger() {

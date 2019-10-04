@@ -19,7 +19,11 @@ class MainView(val activity: MainActivity)  : FrameLayout(activity)  {
 
     fun createRecyclerView(){
         recycler_view_movies.layoutManager = LinearLayoutManager(activity)
-        recycler_view_movies.itemAnimator = DefaultItemAnimator()
-        recycler_view_movies.adapter = activity.presenter.createAddres_adapter(activity.presenter.getMoviesDB())
+        recycler_view_movies.itemAnimator = DefaultItemAnimator() as RecyclerView.ItemAnimator?
+        recycler_view_movies.adapter = activity.presenter.createAddres_adapter(activity,activity.presenter.getMoviesDB())
+    }
+
+    fun updateShopping_cart(count: Int){
+        cart_count.text = count.toString()
     }
 }

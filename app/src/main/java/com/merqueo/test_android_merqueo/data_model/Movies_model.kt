@@ -1,4 +1,4 @@
-package com.merqueo.test_android_merqueo.activity.data_model
+package com.merqueo.test_android_merqueo.data_model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

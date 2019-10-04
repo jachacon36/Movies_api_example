@@ -6,10 +6,52 @@
     android:orientation="vertical"
     tools:context=".activity.main_activity.mvp.activity.MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:padding="5dp"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|end"
+            >
+
+            <TextView
+                android:id="@+id/cart_count"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/circle_background_badge_red"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:text="1"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                />
+
+            <ImageView
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_margin="5dp"
+                android:layout_alignParentEnd="true"
+                android:padding="5dp"
+                app:srcCompat="@drawable/ic_add_shopping_cart_black_24dp">
+
+            </ImageView>
+        </RelativeLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_movies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
     </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>
