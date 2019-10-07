@@ -9,12 +9,11 @@ import androidx.fragment.app.Fragment
 import com.merqueo.test_android_merqueo.R
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.activity.MainActivity
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_shopping_cart.*
-import kotlinx.android.synthetic.main.fragment_shopping_cart.movie_description
-import kotlinx.android.synthetic.main.fragment_shopping_cart.movie_name
-import kotlinx.android.synthetic.main.movie_card.*
+import kotlinx.android.synthetic.main.detail_movie.*
+import kotlinx.android.synthetic.main.detail_movie.movie_description
+import kotlinx.android.synthetic.main.detail_movie.movie_name
 
-class FragmentShoppingCart : Fragment(){
+class DetailMovie : Fragment(){
 
     private var mContext: Context? = null
 
@@ -26,7 +25,7 @@ class FragmentShoppingCart : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.fragment_shopping_cart, container, false)
+        val view = inflater.inflate(R.layout.detail_movie, container, false)
         mainActivity = activity as MainActivity?
         assert(mainActivity != null)
         mContext = context

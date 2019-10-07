@@ -12,7 +12,8 @@ import com.merqueo.test_android_merqueo.activity.main_activity.dagger.MainModule
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.presenter.MainPresenter
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.view.MainView
 import com.merqueo.test_android_merqueo.dagger.aplication.Aplication_test
-import com.merqueo.test_android_merqueo.fragment.FragmentShoppingCart
+import com.merqueo.test_android_merqueo.fragment.DetailMovie
+import com.merqueo.test_android_merqueo.fragment.ShoppingCart
 
 import javax.inject.Inject
 
@@ -25,7 +26,9 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var presenter: MainPresenter
     @Inject
-    lateinit var fragmentShoppingCart: FragmentShoppingCart
+    lateinit var detailMovie: DetailMovie
+    @Inject
+    lateinit var shoppingCart: ShoppingCart
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,11 +81,21 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun showFragment(fragmentShoppingCart: FragmentShoppingCart) {
+    fun showFragmentDetailMovie(detailMovie: DetailMovie) {
             val fragmentManager = supportFragmentManager
             fragmentManager.beginTransaction()
-                .replace(R.id.parent_layout_main, fragmentShoppingCart)
+                .replace(R.id.parent_layout_main, detailMovie)
                 .addToBackStack(null).commit()
+
+
+
+    }
+
+    fun showFragmentCart(shoppingCart: ShoppingCart) {
+        val fragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction()
+            .replace(R.id.parent_layout_main, shoppingCart)
+            .addToBackStack(null).commit()
 
 
 

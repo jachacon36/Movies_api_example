@@ -12,8 +12,9 @@ import com.merqueo.test_android_merqueo.activity.main_activity.mvp.activity.Main
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.model.MainModel
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.view.MainView
 import com.merqueo.test_android_merqueo.adapter.Movies_adapter
+import com.merqueo.test_android_merqueo.adapter.Movies_adapter_cart
 import com.merqueo.test_android_merqueo.data_model.Result
-import com.merqueo.test_android_merqueo.data_model.Shopping_cart
+import com.merqueo.test_android_merqueo.data_model.ResultShoppingCart
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -108,9 +109,17 @@ class MainPresenter(
     }
 
 
-    fun createAddres_adapter(activity : MainActivity , movies: RealmResults<Movies_model>): Movies_adapter {
-        var adapter = Movies_adapter(activity, movies)
-        movies.addChangeListener { t, changeSet -> adapter.notifyDataSetChanged() }
+    fun createMovies_adapter(activity : MainActivity, movies: RealmResults<Movies_model>): Movies_adapter {
+
+        val adapter = Movies_adapter(activity, movies)
+        movies.addChangeListener { _, _ -> adapter.notifyDataSetChanged() }
+        return adapter
+    }
+
+    fun createMovies_adapterShoppingCart(activity: MainActivity, movies: RealmResults<ResultShoppingCart>): Movies_adapter_cart {
+
+        val adapter = Movies_adapter_cart(activity, movies)
+        movies.addChangeListener { _, _ -> adapter.notifyDataSetChanged() }
         return adapter
     }
 
@@ -118,14 +127,23 @@ class MainPresenter(
         return realm.where(Movies_model::class.java).findAll()
     }
 
-    fun addMovieShopping_Cart(position : Int){
-        var movie : Shopping_cart = Shopping_cart()
+    fun addMovieShopping_Cart(
+        originalTitle: String?,
+        overview: String?,
+        id: Int?,
+        posterPath: String?
+    ){
+        var movie : ResultShoppingCart = ResultShoppingCart()
+        movie.originalTitle = originalTitle
+        movie.overview = overview
+        movie.id = id
+        movie.posterPath = posterPath
         realm.executeTransaction { realm -> realm.insertOrUpdate(movie) }
         view.updateShopping_cart(getMovieShopping_Cart().size)
     }
 
-    fun getMovieShopping_Cart(): RealmResults<Shopping_cart> {
-        return realm.where(Shopping_cart::class.java).findAll()
+    fun getMovieShopping_Cart(): RealmResults<ResultShoppingCart> {
+        return realm.where(ResultShoppingCart::class.java).findAll()
     }
     fun clearMoviesDataFromDB() {
         val movies = realm.where(Result::class.java).findAll()

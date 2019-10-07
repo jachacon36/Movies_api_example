@@ -13,17 +13,23 @@ class MainView(val activity: MainActivity)  : FrameLayout(activity)  {
 
     init {
         View.inflate(context, R.layout.activity_main, this)
-
+        setOnclickListeners()
 
     }
 
     fun createRecyclerView(){
         recycler_view_movies.layoutManager = LinearLayoutManager(activity)
         recycler_view_movies.itemAnimator = DefaultItemAnimator() as RecyclerView.ItemAnimator?
-        recycler_view_movies.adapter = activity.presenter.createAddres_adapter(activity,activity.presenter.getMoviesDB())
+        recycler_view_movies.adapter = activity.presenter.createMovies_adapter(activity,activity.presenter.getMoviesDB())
     }
 
     fun updateShopping_cart(count: Int){
         cart_count.text = count.toString()
+    }
+
+    fun setOnclickListeners(){
+        cart_item.setOnClickListener {
+            activity.showFragmentCart(activity.shoppingCart)
+        }
     }
 }
