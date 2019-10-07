@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.merqueo.test_android_merqueo.R
+
+
 import com.merqueo.test_android_merqueo.activity.main_activity.dagger.DaggerMainComponent
 import com.merqueo.test_android_merqueo.activity.main_activity.dagger.MainModule
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.presenter.MainPresenter
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.view.MainView
 import com.merqueo.test_android_merqueo.dagger.aplication.Aplication_test
-import com.merqueo.test_android_merqueo.helpers.Constants
+import com.merqueo.test_android_merqueo.fragment.FragmentShoppingCart
+
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var view: MainView
     @Inject
     lateinit var presenter: MainPresenter
+    @Inject
+    lateinit var fragmentShoppingCart: FragmentShoppingCart
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         view.createRecyclerView()
         getMovies()
         view.updateShopping_cart(presenter.getMovieShopping_Cart().size)
+
     }
 
     private fun setDagger() {
@@ -69,6 +75,16 @@ class MainActivity : AppCompatActivity() {
 
     fun getMovies() {
         presenter.getMovies(1)
+
+    }
+
+    fun showFragment(fragmentShoppingCart: FragmentShoppingCart) {
+            val fragmentManager = supportFragmentManager
+            fragmentManager.beginTransaction()
+                .replace(R.id.parent_layout_main, fragmentShoppingCart)
+                .addToBackStack(null).commit()
+
+
 
     }
 

@@ -1,57 +1,70 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_layout_main"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.main_activity.mvp.activity.MainActivity">
+    tools:context=".activity.main_activity.mvp.activity.MainActivity"
+    android:fitsSystemWindows="true"
+    >
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue"
-        android:padding="5dp"
-
+        android:layout_height="?attr/actionBarSize"
         >
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|end"
             >
 
-            <TextView
-                android:id="@+id/cart_count"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_alignParentEnd="true"
-                android:background="@drawable/circle_background_badge_red"
-                android:elevation="1dp"
-                android:gravity="center"
-                android:text="1"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|end"
+                >
 
-            <ImageView
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_margin="5dp"
-                android:layout_alignParentEnd="true"
-                android:padding="5dp"
-                app:srcCompat="@drawable/ic_add_shopping_cart_black_24dp">
+                <TextView
+                    android:id="@+id/cart_count"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/circle_background_badge_red"
+                    android:elevation="1dp"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
 
-            </ImageView>
-        </RelativeLayout>
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_margin="5dp"
+                    android:layout_alignParentEnd="true"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/ic_add_shopping_cart_black_24dp">
+
+                </ImageView>
+            </RelativeLayout>
 
 
-    </androidx.appcompat.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_movies"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
 
     </androidx.recyclerview.widget.RecyclerView>
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

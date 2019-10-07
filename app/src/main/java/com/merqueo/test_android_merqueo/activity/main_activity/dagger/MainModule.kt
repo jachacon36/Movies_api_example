@@ -5,6 +5,7 @@ import com.merqueo.test_android_merqueo.activity.main_activity.mvp.model.MainMod
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.presenter.MainPresenter
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.view.MainView
 import com.merqueo.test_android_merqueo.dagger.network.Network
+import com.merqueo.test_android_merqueo.fragment.FragmentShoppingCart
 import dagger.Module
 import dagger.Provides
 
@@ -34,6 +35,12 @@ class MainModule(private val activity: MainActivity) {
     @MainScope
     fun model(network: Network): MainModel {
         return MainModel(network)
+    }
+
+    @Provides
+    @MainScope
+    fun fragmentShoppingCart(): FragmentShoppingCart {
+        return FragmentShoppingCart()
     }
 
 

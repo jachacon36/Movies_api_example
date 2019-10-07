@@ -40,11 +40,12 @@ class Movies_adapter(private val activity: MainActivity, private val movies_db: 
             Picasso.get().load("https://image.tmdb.org/t/p/w92${movies.results?.get(position)?.posterPath}").into(holder.movie_picture)
             holder.btn_add.setOnClickListener {
                 activity.presenter.addMovieShopping_Cart(position)
-                Log.e("Click", "Click")
+
             }
 
             holder.movie_picture.setOnClickListener {
-
+                activity.presenter.indexMovie = position
+                activity.showFragment(activity.fragmentShoppingCart)
             }
 
         } catch (e: Exception) {

@@ -69,6 +69,8 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:paddingRight="16dp"
+                android:ellipsize="marquee"
+                android:maxLines="4"
                 android:text="@string/loading"
                 android:textSize="14sp" />
 

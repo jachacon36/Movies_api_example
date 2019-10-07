@@ -26,6 +26,8 @@ class MainPresenter(
 ) {
     private val realm = Realm.getDefaultInstance()
     private val REQUEST = 101
+    var indexMovie = 0
+    var pathPoster = ""
 
     fun getMovies(page : Int): Disposable {
         return model.getMovies(page)
