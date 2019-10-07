@@ -27,6 +27,11 @@ class MainView(val activity: MainActivity)  : FrameLayout(activity)  {
         cart_count.text = count.toString()
     }
 
+    fun getShopping_cartCount() : Int{
+        var count : String = cart_count.text.toString()
+       return count.toInt()
+    }
+
     fun setOnclickListeners(){
         cart_item.setOnClickListener {
             activity.showFragmentCart(activity.shoppingCart)

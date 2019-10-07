@@ -28,7 +28,8 @@ class MainPresenter(
     private val realm = Realm.getDefaultInstance()
     private val REQUEST = 101
     var indexMovie = 0
-    var pathPoster = ""
+    var shoppingCart_open = false
+
 
     fun getMovies(page : Int): Disposable {
         return model.getMovies(page)
@@ -151,5 +152,19 @@ class MainPresenter(
 
     }
 
+    fun clearMoviesCartFromDB() {
+        val movies = realm.where(ResultShoppingCart::class.java).findAll()
+        realm.executeTransaction { movies.deleteAllFromRealm() }
+        view.updateShopping_cart(0)
+
+    }
+
+    fun clearMovieCartFromDB(position: Int) {
+        val movies = realm.where(ResultShoppingCart::class.java).findAll()
+        realm.executeTransaction { movies.deleteFromRealm(position)}
+        view.updateShopping_cart(view.getShopping_cartCount()-1)
+
+
+    }
 
 }

@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso
 
 
 import io.realm.RealmResults
-import kotlinx.android.synthetic.main.movie_card.view.*
 import kotlinx.android.synthetic.main.movie_card.view.movie_description
 import kotlinx.android.synthetic.main.movie_card.view.movie_name
 import kotlinx.android.synthetic.main.movie_card.view.movie_picture
@@ -37,11 +36,8 @@ class Movies_adapter_cart(private val activity: MainActivity, private val movies
             holder.movie_description.text = movies.overview
             Picasso.get().load("https://image.tmdb.org/t/p/w92${movies.posterPath}").into(holder.movie_picture)
             holder.btn_remove.setOnClickListener {
-                activity.presenter.addMovieShopping_Cart(
-                    movies!!.originalTitle,
-                    movies!!.overview,
-                    movies!!.id,
-                    movies.posterPath
+                activity.presenter.clearMovieCartFromDB( position
+
 
                 )
 

@@ -36,6 +36,7 @@ class ShoppingCart : Fragment(){
     override fun onResume() {
         super.onResume()
         createRecyclerView()
+        setOnclickListeners()
     }
 
 
@@ -44,8 +45,10 @@ class ShoppingCart : Fragment(){
         mainActivity!!.supportFragmentManager.beginTransaction().remove(this).commit()
     }
 
-    fun createMovies(){
-
+    fun setOnclickListeners(){
+    empty_cart.setOnClickListener {
+        mainActivity!!.presenter.clearMoviesCartFromDB()
+    }
 
     }
 
