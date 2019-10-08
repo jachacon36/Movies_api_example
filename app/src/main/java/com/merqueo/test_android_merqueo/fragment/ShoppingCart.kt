@@ -48,6 +48,7 @@ class ShoppingCart : Fragment(){
     fun setOnclickListeners(){
     empty_cart.setOnClickListener {
         mainActivity!!.presenter.clearMoviesCartFromDB()
+        mainActivity!!.view.showToast(mainActivity!!.resources.getString(R.string.empty_cart))
     }
 
     }

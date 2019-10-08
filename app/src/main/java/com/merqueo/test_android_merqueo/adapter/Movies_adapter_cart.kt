@@ -36,17 +36,12 @@ class Movies_adapter_cart(private val activity: MainActivity, private val movies
             holder.movie_description.text = movies.overview
             Picasso.get().load("https://image.tmdb.org/t/p/w92${movies.posterPath}").into(holder.movie_picture)
             holder.btn_remove.setOnClickListener {
-                activity.presenter.clearMovieCartFromDB( position
-
-
-                )
+                activity.presenter.clearMovieCartFromDB( position)
+                activity.view.showToast("${holder.movie_name.text.toString()}, ${activity.resources.getString(R.string.remove_movie)}")
 
             }
 
-            holder.movie_picture.setOnClickListener {
-                activity.presenter.indexMovie = position
-                activity.showFragmentDetailMovie(activity.detailMovie)
-            }
+
 
         } catch (e: Exception) {
         }

@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.merqueo.test_android_merqueo.R
 import com.merqueo.test_android_merqueo.data_model.Movies_model
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.activity.MainActivity
 import com.merqueo.test_android_merqueo.activity.main_activity.mvp.model.MainModel
@@ -141,6 +142,7 @@ class MainPresenter(
         movie.posterPath = posterPath
         realm.executeTransaction { realm -> realm.insertOrUpdate(movie) }
         view.updateShopping_cart(getMovieShopping_Cart().size)
+        view.showToast("$originalTitle, ${view.activity.resources.getString(R.string.add_cart)}")
     }
 
     fun getMovieShopping_Cart(): RealmResults<ResultShoppingCart> {
@@ -163,7 +165,6 @@ class MainPresenter(
         val movies = realm.where(ResultShoppingCart::class.java).findAll()
         realm.executeTransaction { movies.deleteFromRealm(position)}
         view.updateShopping_cart(view.getShopping_cartCount()-1)
-
 
     }
 

@@ -9,4 +9,7 @@
     <string name="movies">PELICULAS</string>
     <string name="shopping_cart">CARRITO</string>
     <string name="details">DETALLES</string>
+    <string name="add_cart">Añadida al carrito</string>
+    <string name="remove_movie">A sido removida del carrito</string>
+    <string name="empty_cart">A vaciado el carrito</string>
 </resources>

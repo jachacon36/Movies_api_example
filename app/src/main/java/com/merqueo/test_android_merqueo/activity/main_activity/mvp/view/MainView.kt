@@ -2,6 +2,7 @@ package com.merqueo.test_android_merqueo.activity.main_activity.mvp.view
 
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +19,7 @@ class MainView(val activity: MainActivity)  : FrameLayout(activity)  {
     }
 
     fun createRecyclerView(){
-        recycler_view_movies.layoutManager = LinearLayoutManager(activity)
+        recycler_view_movies.layoutManager = LinearLayoutManager(activity) as RecyclerView.LayoutManager?
         recycler_view_movies.itemAnimator = DefaultItemAnimator() as RecyclerView.ItemAnimator?
         recycler_view_movies.adapter = activity.presenter.createMovies_adapter(activity,activity.presenter.getMoviesDB())
     }
@@ -36,5 +37,9 @@ class MainView(val activity: MainActivity)  : FrameLayout(activity)  {
         cart_item.setOnClickListener {
             activity.showFragmentCart(activity.shoppingCart)
         }
+    }
+
+    fun showToast(text : String){
+        Toast.makeText(activity, "$text", Toast.LENGTH_SHORT).show()
     }
 }

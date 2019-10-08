@@ -36,6 +36,7 @@ class DetailMovie : Fragment(){
     override fun onResume() {
         super.onResume()
         createMovie()
+        setOnClickLkisteners()
     }
 
 
@@ -75,6 +76,24 @@ class DetailMovie : Fragment(){
             .presenter.getMoviesDB().first()!!
             .results!!.get(mainActivity!!.presenter.indexMovie)!!.voteAverage.toString() + "/10"
 
+    }
+
+    fun setOnClickLkisteners(){
+        btn_add.setOnClickListener {
+            mainActivity!!.presenter.addMovieShopping_Cart(
+                movie_name.text.toString(),
+                movie_description.text.toString(),
+                mainActivity!!
+                    .presenter.getMoviesDB().first()!!
+                    .results!!.get(mainActivity!!.presenter.indexMovie)!!.id,
+                mainActivity!!
+                    .presenter.getMoviesDB().first()!!
+                    .results!!.get(mainActivity!!.presenter.indexMovie)!!.posterPath
+
+
+
+            )
+        }
     }
 
 }
