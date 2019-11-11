@@ -1,12 +1,12 @@
 # Movies_api_example
 
-Esta aplicación es un ejemplo de como se consume un API utilizando una arquitectura limpia MVP + Dagger 2 + RxJava (Observer - Observable)+ persistencia de datos.
+This application is an example of how an API is consumed using a clean architecture MVP + Dagger 2 + RxJava (Observer - Observable) + data persistence.
 
-## Para este projecto se utilizo:
+## For this project we used:
 
-* Dagger 2 (injector de dependencias)
-* Patron de diseño MVP
-* Retrofit 2 (llamadas al API)
-* RxJava - Rxandroid (Observer - Observable) (Asincronia)
-* Picasso - Cargar imagenes desde el API
+* Dagger 2 (dependencies injector)
+* MVP design pattern
+* Retrofit 2 (API calls)
+* RxJava - Rxandroid (Observer - Observable) (Asynchronous)
+* Picasso - Upload images from the API
 * Material desing (frontend)
