@@ -10,3 +10,4 @@ This application is an example of how an API is consumed using a clean architect
 * RxJava - Rxandroid (Observer - Observable) (Asynchronous)
 * Picasso - Upload images from the API
 * Material desing (frontend)
+* Realm - Mongo DB (data persistence)
