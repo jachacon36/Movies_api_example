@@ -1,6 +1,6 @@
 # Movies_api_example
 
-This application is an example of how an API is consumed using a clean architecture MVP + Dagger 2 + RxJava (Observer - Observable) + data persistence.
+This application is an example of how an API is consumed using a clean architecture Kotlin + MVP + Dagger 2 + RxJava (Observer - Observable) + data persistence.
 
 ## For this project we used:
 
