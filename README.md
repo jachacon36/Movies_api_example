@@ -11,3 +11,8 @@ This application is an example of how an API is consumed using a clean architect
 * Picasso - Upload images from the API
 * Material desing (frontend)
 * Realm - Mongo DB (data persistence)
+
+![Screenshot](https://github.com/jachacon36/Movies_api_example/blob/master/screenshots/Screenshot_20191008-100030.png)
+![Screenshot](https://github.com/jachacon36/Movies_api_example/blob/master/screenshots/Screenshot_20191008-100052.png)
+![Screenshot](https://github.com/jachacon36/Movies_api_example/blob/master/screenshots/Screenshot_20191008-100058.png)
+![Screenshot](https://github.com/jachacon36/Movies_api_example/blob/master/screenshots/Screenshot_20191008-100109.png)
